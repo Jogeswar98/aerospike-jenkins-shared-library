@@ -1,35 +1,18 @@
-@Library('aerospike-jenkins-shared-library') _  // Load the shared library
+@Library('aerospike-jenkins-shared-library@main') _
 
 pipeline {
-    agent any  // Use any available Jenkins agent
+    agent any
     stages {
         stage('Clone Repository') {
             steps {
-                script {
-                    echo "Cloning Aerospike repository..."
-                    deploy_aerospike()  // Call the shared library function to deploy Aerospike
-                }
-            }
-        }
-        stage('User Approval') {
-            steps {
-                input message: "Do you want to proceed with the deployment?", ok: "Yes"
+                echo 'Cloning Aerospike repository...'
+                // Additional steps as required
             }
         }
         stage('Run Ansible Playbook') {
             steps {
-                script {
-                    echo "Executing Ansible playbook for Aerospike..."
-                    // Add additional deployment logic if necessary
-                }
-            }
-        }
-        stage('Notification') {
-            steps {
-                script {
-                    echo "Deployment completed. Sending notifications."
-                    // Add notification logic (e.g., email or Slack)
-                }
+                echo 'Running Ansible Playbook...'
+                // Invoke playbook or relevant tasks
             }
         }
     }
