@@ -1,0 +1,15 @@
+---
+- name: Install Aerospike
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Install Aerospike package
+      apt:
+        name: aerospike-server
+        state: present
+
+    - name: Start Aerospike service
+      service:
+        name: aerospike
+        state: started
+
